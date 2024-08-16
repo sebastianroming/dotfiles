@@ -4,6 +4,9 @@ export ZSH=$HOME/.dotfiles
 # your project folder that we can `c [tab]` to
 export PROJECTS=~/dev
 
+# FNM
+# eval "$(fnm env --use-on-cd)"
+
 # NVM
 export NVM_DIR="$HOME/.nvm"
 [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"
@@ -53,3 +56,17 @@ zle -N up-line-or-beginning-search
 zle -N down-line-or-beginning-search
 bindkey "^[[A" up-line-or-beginning-search # Up
 bindkey "^[[B" down-line-or-beginning-search # Down
+
+# fnm
+export PATH=/Users/webmonkey/.fnm:$PATH
+eval "`fnm env`"
+
+# pnpm
+export PNPM_HOME="/Users/webmonkey/Library/pnpm"
+export PATH="$PNPM_HOME:$PATH"
+# pnpm end
+
+function httpstat() {
+  /opt/homebrew/bin/httpstat $1 -H 'x-vercel-debug-proxy-timing: 1'
+}
+export PATH="/opt/homebrew/opt/libpq/bin:$PATH"
